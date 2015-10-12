@@ -8,7 +8,6 @@ Spree::Payment.class_eval do
 
   scope :from_multibanco, -> { joins(:payment_method).where(:spree_payment_methods => { :type => 'Spree::PaymentMethod::Multibanco' }) }
 
-
   def generate_multibanco_reference
     if self.payment_method.type == 'Spree::PaymentMethod::Multibanco' && Spree::MultibancoProvider.active.any?
       self.multibanco_provider = Spree::MultibancoProvider.active.first
