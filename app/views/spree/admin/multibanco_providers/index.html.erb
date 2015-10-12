@@ -1,0 +1,33 @@
+<%= render :partial => 'spree/admin/shared/sub_menu/configuration' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_multibanco_providers) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_multibanco_provider), new_admin_multibanco_provider_path, :class => "btn-success", :icon => 'add', :id => 'admin_new_multibanco_provider_link'%>
+<% end %>
+
+<%= paginate @multibanco_providers %>
+
+<table class='table' id="listing_multibanco_providers" data-hook>
+  <thead>
+    <th><%= sort_link @search, :name, Spree.t(:multibanco_provider_name) %></th>
+    <th><%= sort_link @search, :entity, Spree.t(:multibanco_provider_entity) %></th>
+    <th><%= sort_link @search, :subentity, Spree.t(:multibanco_provider_subentity) %></th>
+    <th><%= sort_link @search, :active, Spree.t(:multibanco_provider_active) %></th>
+  </thead>
+
+  <tbody>
+    <% @multibanco_providers.each do |provider| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td class="align-center"><%= provider.name %></td>
+        <td class="align-center"><%= provider.entity %></td>
+        <td class="align-center"><%= provider.subentity %></td>
+        <td class="align-center" id='active-status-<%= provider.id %>'><%= multibanco_provider_status(provider) %></td>
+        <td class="actions"><%= link_to action_to_toggle_multibanco_provider_status(provider), toggle_activation_admin_multibanco_provider_path(provider), :remote => true, :method => :put %></td>
+        <td class="actions"><%= link_to_edit provider, :no_text => true, :class => 'edit' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

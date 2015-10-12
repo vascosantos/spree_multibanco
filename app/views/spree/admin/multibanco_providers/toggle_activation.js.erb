@@ -1,0 +1,6 @@
+<% if @success %>
+  $('#active-status-<%= @multibanco_provider.id %>').text('<%= multibanco_provider_status(@multibanco_provider) %>')
+  $('a[href="<%= toggle_activation_admin_multibanco_provider_path(@multibanco_provider) %>"]').text('<%= action_to_toggle_multibanco_provider_status(@multibanco_provider) %>')
+<% else %>
+  alert('<%= @multibanco_provider.errors.full_messages.to_sentence %>')
+<% end %>
