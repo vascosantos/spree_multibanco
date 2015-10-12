@@ -1,0 +1,19 @@
+<div class="well clearfix">
+  <% if (providers = Spree::MultibancoProvider.active).any? %>
+    <table class="table">
+      <tr>
+        <th><%= Spree.t(:multibanco_provider_name) %></th>
+        <th><%= Spree.t(:multibanco_provider_entity) %></th>
+        <th><%= Spree.t(:multibanco_provider_subentity) %></th>
+      </tr>
+
+      <% providers.each do |provider| %>
+        <tr>
+          <td><%= provider.name %></td>
+          <td><%= provider.entity %></td>
+          <td><%= provider.subentity %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
