@@ -15,7 +15,7 @@ Deface::Override.new(
         </tr>
         <tr>
           <td><%= Spree.t(:amount) %></td>
-          <td><%= @order.display_item_total.to_html %></td>
+          <td><%= @order.display_total.to_html %></td>
         </tr>
       </table>
     <% end %>
