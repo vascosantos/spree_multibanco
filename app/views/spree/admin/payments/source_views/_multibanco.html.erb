@@ -3,16 +3,19 @@
 
   <div class="row">
     <div class="alpha six columns">
-      <table>
+      <table class="table table-condensed table-bordered">
         <tr>
-          <td><%= Spree.t(:entity, :scope => :multibanco) %></td><td><%= payment.multibanco_provider.entity %></td>
+          <th width="20%"><%= Spree.t(:entity, :scope => :multibanco) %>:</th>
+          <td><%= payment.multibanco_provider.entity %></td>
         </tr>
         <tr>
-          <td><%= Spree.t(:reference, :scope => :multibanco) %></td><td><%= payment.multibanco_reference %></td>
+          <th><%= Spree.t(:reference, :scope => :multibanco) %>:</th>
+          <td><%= payment.multibanco_reference %></td>
         </tr>
-        <tr>
-          <td><%= Spree.t(:amount, :scope => :multibanco) %></td><td><%= payment.display_amount.to_html %></td>
-        </tr>
+<!--         <tr>
+          <th><%= Spree.t(:amount, :scope => :multibanco) %>:</th>
+          <td><%= payment.display_amount.to_html %></td>
+        </tr> -->
       </table>
     </div>
   </div>
