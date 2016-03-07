@@ -5,7 +5,7 @@
     <div class="alpha six columns">
       <dl>
         <dt><%= Spree.t(:entity, :scope => :multibanco) %>:</dt>
-        <dd><%= payment.multibanco_entity %></dd>
+        <dd><%= payment.multibanco_provider.multibanco_entity %></dd>
 
         <dt><%= Spree.t(:reference, :scope => :multibanco) %>:</dt>
         <dd><%= payment.multibanco_reference %></dd>
