@@ -3,16 +3,18 @@
 
   <div class="row">
     <div class="alpha six columns">
-      <dl>
-        <dt><%= Spree.t(:entity, :scope => :multibanco) %>:</dt>
-        <dd><%= payment.multibanco_provider.entity %></dd>
-
-        <dt><%= Spree.t(:reference, :scope => :multibanco) %>:</dt>
-        <dd><%= payment.multibanco_reference %></dd>
-
-        <dt><%= Spree.t(:amount, :scope => :multibanco) %>:</dt>
-        <dd><%= payment.display_amount.to_html %></dd>
-      </dl>
+      <table>
+        <th>
+          <td><%= Spree.t(:entity, :scope => :multibanco) %></td>
+          <td><%= Spree.t(:reference, :scope => :multibanco) %></td>
+          <td><%= Spree.t(:amount, :scope => :multibanco) %></td>
+        </th>
+        <tr>
+          <td><%= payment.multibanco_provider.entity %></td>
+          <td><%= payment.multibanco_reference %></td>
+          <td><%= payment.display_amount.to_html %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </fieldset>
