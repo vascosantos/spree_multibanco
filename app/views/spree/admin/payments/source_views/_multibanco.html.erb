@@ -4,15 +4,14 @@
   <div class="row">
     <div class="alpha six columns">
       <table>
-        <th>
-          <td><%= Spree.t(:entity, :scope => :multibanco) %></td>
-          <td><%= Spree.t(:reference, :scope => :multibanco) %></td>
-          <td><%= Spree.t(:amount, :scope => :multibanco) %></td>
-        </th>
         <tr>
-          <td><%= payment.multibanco_provider.entity %></td>
-          <td><%= payment.multibanco_reference %></td>
-          <td><%= payment.display_amount.to_html %></td>
+          <td><%= Spree.t(:entity, :scope => :multibanco) %></td><td><%= payment.multibanco_provider.entity %></td>
+        </tr>
+        <tr>
+          <td><%= Spree.t(:reference, :scope => :multibanco) %></td><td><%= payment.multibanco_reference %></td>
+        </tr>
+        <tr>
+          <td><%= Spree.t(:amount, :scope => :multibanco) %></td><td><%= payment.display_amount.to_html %></td>
         </tr>
       </table>
     </div>
