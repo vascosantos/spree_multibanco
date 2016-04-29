@@ -6,5 +6,9 @@ Spree::Core::Engine.routes.draw do
     end
   end
 
-  post '/api/capture_mb_payment', to: 'spree/api/payments#capture_mb_payment', as: 'capture_mb_payment'
+  namespace :api, defaults: { format: 'json' } do
+    resources :payments do
+      post 'capture_mb_payment', on: :collection
+    end
+  end
 end
