@@ -6,13 +6,8 @@ Spree::Api::PaymentsController.class_eval do
 
   def capture_mb_payment
     find_mb_order_and_payment
-    if @payment
-      puts @payment.to_yaml
-      puts @order.to_yaml
-      puts params.to_yaml
-    end
-
     if @payment && params[:referencia] == @payment.multibanco_reference && params[:valor].to_d == @payment.amount && params[:entidade] == @multibanco_provider.entity
+      @order.resume! if @order.state == "canceled"
       capture
     else
       not_found
@@ -22,7 +17,7 @@ Spree::Api::PaymentsController.class_eval do
   private
 
     def find_mb_order_and_payment
-      @payment = Spree::Payment.where(multibanco_reference: params[:referencia], amount: params[:valor].to_d, state: ['pending', 'checkout']).first
+      @payment = Spree::Payment.where(multibanco_reference: params[:referencia], amount: params[:valor].to_d, state: ['pending', 'checkout']).last
       if @payment
         @multibanco_provider = @payment.multibanco_provider
         @order = @payment.order
