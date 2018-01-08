@@ -9,6 +9,7 @@ Spree::Api::PaymentsController.class_eval do
     if @payment && params[:referencia] == @payment.multibanco_reference && params[:valor].to_d == @payment.amount && params[:entidade] == @multibanco_provider.entity
       @order.resume! if @order.state == "canceled"
       capture
+      @order.send_paid_email if @order.respond_to?(:send_paid_email)
     else
       not_found
     end
