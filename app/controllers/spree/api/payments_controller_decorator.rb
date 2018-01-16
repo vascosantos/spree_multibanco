@@ -9,6 +9,11 @@ Spree::Api::PaymentsController.class_eval do
     if @payment && params[:referencia] == @payment.multibanco_reference && params[:valor].to_d == @payment.amount && params[:entidade] == @multibanco_provider.entity
       @order.resume! if @order.state == "canceled"
       capture
+      ## Send push notification
+      if Spree::Config.has_preference?(:send_push_notifications) && Spree::Config[:send_push_notifications]
+        NewOrderNotifyJob.perform_later(@order)
+      end
+      ## Handle invoice and email
       if Spree::Config.has_preference?(:automatic_invoices) && Spree::Config[:automatic_invoices]
         ## Create invoice and send paid email
         if defined?(NewCreateInvoiceJob) == 'constant' && NewCreateInvoiceJob.class == Class  
