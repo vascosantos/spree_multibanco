@@ -16,7 +16,7 @@ Spree::Api::PaymentsController.class_eval do
       ## Handle invoice and email
       if Spree::Config.has_preference?(:automatic_invoices) && Spree::Config[:automatic_invoices]
         ## Create invoice and send paid email
-        if defined?(NewCreateInvoiceJob) == 'constant' && NewCreateInvoiceJob.class == Class  
+        if Object.const_defined?("NewCreateInvoiceJob")
           NewCreateInvoiceJob.perform_later(@order) { @order.send_paid_email if @order.respond_to?(:send_paid_email) }
         else
           ## Only send paid email
