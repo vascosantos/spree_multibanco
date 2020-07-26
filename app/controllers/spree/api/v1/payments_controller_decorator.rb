@@ -1,4 +1,4 @@
-Spree::Api::PaymentsController.class_eval do 
+Spree::Api::V1::PaymentsController.class_eval do 
 
   skip_before_action :find_order, only: [:capture_mb_payment]
 
