@@ -1,0 +1,22 @@
+<fieldset data-hook="multibanco">
+  <legend align="center"><%= Spree.t(:transaction, :scope => :multibanco) %></legend>
+
+  <div class="row">
+    <div class="alpha six columns">
+      <table class="table table-condensed table-bordered">
+        <tr>
+          <th width="20%"><%= Spree.t(:entity, :scope => :multibanco) %>:</th>
+          <td><%= payment.multibanco_provider.entity %></td>
+        </tr>
+        <tr>
+          <th><%= Spree.t(:reference, :scope => :multibanco) %>:</th>
+          <td><%= payment.multibanco_reference %></td>
+        </tr>
+        <tr>
+          <th><%= Spree.t(:amount, :scope => :multibanco) %>:</th>
+          <td><%= payment.display_amount.to_html %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</fieldset>
