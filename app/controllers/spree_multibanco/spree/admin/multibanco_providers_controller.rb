@@ -1,4 +1,4 @@
-module Spree
+module SpreeMultibanco::Spree
   module Admin
     class MultibancoProvidersController < ResourceController
       def index
