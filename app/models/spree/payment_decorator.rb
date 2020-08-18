@@ -1,9 +1,8 @@
 module Spree::PaymentDecorator
   attr_accessor :validate_multibanco_details
 
-  before_create :generate_multibanco_reference
-  
   def self.prepended(base)
+    base.before_create :generate_multibanco_reference
     base.belongs_to :multibanco_provider
     base.validates :multibanco_provider_name, :multibanco_entity, :multibanco_subentity, :multibanco_reference, :presence => true, :if => :validate_multibanco_details
     base.scope :from_multibanco, -> { joins(:payment_method).where(:spree_payment_methods => { :type => 'Spree::PaymentMethod::Multibanco' }) }
