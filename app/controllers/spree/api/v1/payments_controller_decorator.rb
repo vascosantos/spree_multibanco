@@ -1,8 +1,9 @@
 module Spree::Api::V1::PaymentsControllerDecorator
 
-  skip_before_action :find_order, only: [:capture_mb_payment]
-
-  # before_action :find_mb_order_and_payment, only: [:capture_mb_payment]
+  def self.prepended(base)
+    base.skip_before_action :find_order, only: [:capture_mb_payment]
+    # base.before_action :find_mb_order_and_payment, only: [:capture_mb_payment]
+  end
 
   def capture_mb_payment
     find_mb_order_and_payment
