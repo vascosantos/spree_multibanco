@@ -1,4 +1,4 @@
-module SpreeMultibanco::Spree::PaymentDecorator
+module Spree::PaymentDecorator
   belongs_to :multibanco_provider
 
   before_create :generate_multibanco_reference
@@ -37,4 +37,4 @@ module SpreeMultibanco::Spree::PaymentDecorator
   end
 end
 
-::Spree::Payment.prepend(SpreeMultibanco::Spree::PaymentDecorator)
+::Spree::Payment.prepend(Spree::PaymentDecorator)

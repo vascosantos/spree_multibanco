@@ -1,4 +1,4 @@
-module SpreeMultibanco::Spree::Api::V1::PaymentsControllerDecorator
+module Spree::Api::V1::PaymentsControllerDecorator
 
   skip_before_action :find_order, only: [:capture_mb_payment]
 
@@ -43,4 +43,4 @@ module SpreeMultibanco::Spree::Api::V1::PaymentsControllerDecorator
     end
 end
 
-::Spree::Api::V1::PaymentsController.prepend(SpreeMultibanco::Spree::Api::V1::PaymentsControllerDecorator)
+::Spree::Api::V1::PaymentsController.prepend(Spree::Api::V1::PaymentsControllerDecorator)

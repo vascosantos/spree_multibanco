@@ -1,4 +1,4 @@
-module SpreeMultibanco::Spree
+module Spree
   class MultibancoProvider < ActiveRecord::Base
   	has_many :payments
 

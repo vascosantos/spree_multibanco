@@ -1,4 +1,4 @@
-module SpreeMultibanco::Spree
+module Spree
   class PaymentMethod::Multibanco < PaymentMethod
     
     def actions
