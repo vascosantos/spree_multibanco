@@ -8,7 +8,7 @@ Spree::Core::Engine.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
-      resources :payments do
+      resources :payments, only: [] do
         get 'capture_mb_payment', on: :collection
       end
     end
